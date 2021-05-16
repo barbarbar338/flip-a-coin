@@ -1,0 +1,91 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="robots" content="INDEX, FOLLOW" />
+		<meta name="theme-color" content="#00f9ff" />
+		<meta name="description" content="Flip a coin" />
+		<meta name="og:title" content="Flip a coin" />
+		<meta name="og:site_name" content="Flip a coin" title="title" />
+		<meta
+			name="keywords"
+			content="flip, a, coin, coin-flip, heads, tails"
+		/>
+		<meta
+			name="og:image"
+			content="https://flip-a-coin.vercel.app/assets/img/banner.png"
+		/>
+		<meta name="twitter:title" content="Flip a coin" />
+		<meta name="twitter:description" content="Flip a coin" />
+		<meta
+			name="twitter:image"
+			content="https://flip-a-coin.vercel.app/assets/img/banner.png"
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+		/>
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+		<link rel="icon" href="assets/img/favicon.png" />
+		<link rel="stylesheet" href="assets/css/tailwind.css" />
+		<title>Flip a coin</title>
+	</head>
+	<body class="select-none bg-black overflow-hidden">
+		<canvas id="canvas" class="absolute w-full h-full"></canvas>
+		<button
+			class="
+				absolute
+				top-10
+				left-10
+				border-2 border-green-600
+				rounded-lg
+				px-10
+				py-2
+				text-green-400
+				cursor-pointer
+				focus:outline-none
+				hover:bg-green-600
+				hover:text-green-200
+			"
+			onclick="flip()"
+		>
+			flip
+		</button>
+		<div
+			class="
+				flex
+				items-center
+				justify-center
+				w-screen
+				h-screen
+				overflow-hidden
+			"
+		>
+			<img class="w-60 h-600" id="output" alt="output" />
+		</div>
+
+		<script src="assets/js/particles.js"></script>
+		<script>
+			const outputs = ["heads", "tails"];
+			const img = document.getElementById("output");
+
+			flip();
+
+			function flip() {
+				const res = outputs[Math.floor(Math.random() * outputs.length)];
+				document.title = `Flip a coin ✔️ ${res}`;
+				img.src = `./assets/img/${res}.png`;
+				img.draggable = false;
+				startAdding();
+				setTimeout(stopAdding, 50);
+			}
+		</script>
+	</body>
+</html>
